@@ -1,0 +1,21 @@
+Content-Type: text/html; charset=utf-8
+X-Ratelimit-Limit-5: 46800
+X-Ratelimit-Remaining-5: 46797
+Cache-Control: private
+Content-Encoding: gzip
+Date: Wed, 02 Mar 2022 19:52:50 GMT
+Expires: -1
+P3P: policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+Pragma: no-cache
+Server: ATS
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Vcap-Request-Id: 59c62238-e077-4fd3-5f50-b208cad80c47
+X-Xss-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000;includeSubDomains
+Set-Cookie: B=f08n41dh1vioi&b=3&s=ni; expires=Sat, 02-Mar-2024 19:52:51 GMT; path=/; domain=.yahoo.co.jp; secure
+Set-Cookie: A=f08n41dh1vioi&sd=B&t=1646250770&u=1646250770&v=1; expires=Thu, 02 Mar 2023 19:52:51 GMT; domain=.yahoo.co.jp; path=/; httponly; secure
+Set-Cookie: XA=f08n41dh1vioi&sd=B&t=1646250770&u=1646250770&v=1; expires=Thu, 02 Mar 2023 19:52:51 GMT; domain=.yahoo.co.jp; path=/; httponly; secure; samesite=none
+Set-Cookie: XB=f08n41dh1vioi&b=3&s=ni; expires=Sat, 02-Mar-2024 19:52:51 GMT; path=/; domain=.yahoo.co.jp; secure; samesite=none
+Age: 2
