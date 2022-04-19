@@ -1,18 +1,12 @@
 import os, scrapy, urllib
 import time
 import random, string
-#from yahoo.items import DownloadImagesItem
-
-#scrapy crawl <spider_name>
-#scrapy crawl yahoo_auctions
-
 
 class YahooAuctionsSpider(scrapy.Spider):
     name = 'yahoo_auctions'
    
     allowed_domains = ['auctions.yahoo.co.jp']
     
-    #すべてのカテゴリ ホビー、カルチャー 楽器、器材 ギター エレキギター 本体 
     start_urls = ['https://auctions.yahoo.co.jp/search/search?auccat=2084019019&tab_ex=commerce&ei=utf-8&aq=1&oq=%E3%82%B9%E3%83%88%E3%83%A9%E3%83%88%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC&exflg=1&p=%E3%82%B9%E3%83%88%E3%83%A9%E3%83%88%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC&x=0&y=0&sc_i=auc_sug_cat',
                   'https://auctions.yahoo.co.jp/search/search?auccat=2084019019&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&exflg=1&p=%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%AB&x=0&y=0',
                   'https://auctions.yahoo.co.jp/search/search?auccat=2084019019&tab_ex=commerce&ei=utf-8&aq=3&oq=%E3%81%A6%E3%82%8C%E3%81%8D%E3%82%83&exflg=1&p=%E3%83%86%E3%83%AC%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC&sc_i=auc_sug',
@@ -32,7 +26,6 @@ class YahooAuctionsSpider(scrapy.Spider):
                   'https://auctions.yahoo.co.jp/search/search?auccat=2084019034&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&exflg=1&p=%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%83%83%E3%82%AF%E3%83%9E%E3%83%B3&x=43&y=34',
                   'https://auctions.yahoo.co.jp/search/search?auccat=2084019034&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&exflg=1&p=%E3%82%A2%E3%82%A4%E3%83%90%E3%83%8B%E3%83%BC%E3%82%BA&x=45&y=36',
                   'https://auctions.yahoo.co.jp/search/search?auccat=2084019034&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&exflg=1&p=%E3%82%B0%E3%83%AC%E3%82%B3&x=34&y=22',
-
                   'https://auctions.yahoo.co.jp/search/search?auccat=&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&fr=auc_top&p=%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%82%BF%E3%83%BC&x=0&y=0',
                   'https://auctions.yahoo.co.jp/search/search?auccat=&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&exflg=1&p=%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%83%BC&x=0&y=0',
                   'https://auctions.yahoo.co.jp/search/search?auccat=22436&tab_ex=commerce&ei=utf-8&aq=2&oq=%E3%82%A2%E3%83%B3%E3%83%97&exflg=1&p=%E3%82%A2%E3%83%B3%E3%83%97&sc_i=auc_sug_cat',
@@ -52,8 +45,7 @@ class YahooAuctionsSpider(scrapy.Spider):
                   'https://auctions.yahoo.co.jp/search/search?auccat=24242&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&exflg=1&p=%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%AA&x=32&y=36',
                   'https://auctions.yahoo.co.jp/search/search?auccat=24698&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&p=%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97&x=0&y=0',
                   'https://auctions.yahoo.co.jp/search/search?auccat=26308&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&p=bmw&x=33&y=15']
-    #os.mkdir('/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/train_data/')
-    #os.mkdir('/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/verification_data/')
+   
     start_urls = ['https://auctions.yahoo.co.jp/search/search?auccat=22436&tab_ex=commerce&ei=utf-8&aq=-1&oq=&sc_i=&p=%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89&x=26&y=21']
 
     
@@ -69,21 +61,15 @@ class YahooAuctionsSpider(scrapy.Spider):
         else:
             label = "others"
 
-        #self.dest_dir = f'/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/scrapy_images/{label}'
-
         for i,image in enumerate(response.css('ul.Products__items img')):
-
-            #self.dest_dir = f'/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/scrapy_images/{label}'
 
             image_url = image.css('::attr(src)').extract_first().strip()
 
             file_name = f"{rand_str}-{i + 1}.jpg"
 
             if i < 40:
-                #self.dest_dir = f'/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/train_data/{label}'
                 self.dest_dir = f'/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/train_data_test/{label}'
             else:
-                #self.dest_dir = f'/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/verification_data/{label}'
                 self.dest_dir = f'/Users/takeshiotani/Desktop/sagemaker_project/Scrapy_1/yahoo_2/verification_data_test/{label}'
     
             if not os.path.exists(self.dest_dir):
@@ -92,8 +78,3 @@ class YahooAuctionsSpider(scrapy.Spider):
             urllib.request.urlretrieve(image_url, os.path.join(self.dest_dir, file_name))
 
             time.sleep(1)
-            
-        
-        
-        
-#/home/ec2-user/yahoo
